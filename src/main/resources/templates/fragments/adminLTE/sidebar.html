@@ -1,0 +1,193 @@
+<!-- ***********************************************************************************************
+
+											SIDEBAR 
+
+     ***********************************************************************************************--> 
+<!-- Main Sidebar Container -->
+<aside th:fragment="sidebar" class="main-sidebar sidebar-dark-primary elevation-4">
+	<!-- Brand Logo -->
+	<a href="index3.html" class="brand-link">
+		<img th:src="@{/images/logo.jpeg}" alt="Logo"
+			class="brand-image img-circle elevation-3" style="opacity: .8">
+		<span th:text="${nombreApp}" class="brand-text font-weight-light"></span>
+	</a>
+
+	<!-- Sidebar -->
+	<div class="sidebar">
+		<!-- Sidebar user panel (optional) -->
+		<div class="user-panel mt-3 pb-3 mb-3 d-flex">
+			<div class="image">
+				<img th:src="@{/images/logo.jpeg}" class="img-circle elevation-2" alt="User Image">
+			</div>
+			<div class="info">
+				<a href="#" th:text="${usuario.nombre +' '+ usuario.apellido }" class="d-block"></a>
+			</div>
+		</div>
+
+		<!-- SidebarSearch Form -->
+		<div class="form-inline">
+			<div class="input-group" data-widget="sidebar-search">
+				<input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+				<div class="input-group-append">
+					<button class="btn btn-sidebar">
+						<i class="fas fa-search fa-fw"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- Sidebar Menu -->
+		<nav class="mt-2">
+			<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+				<!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+				<li th:class="'nav-item '+${titulo == 'Dashboard' ? 'menu-open' : ''}">
+					<a href="#" th:class="'nav-link '+${titulo == 'Dashboard' ? 'active' : ''}">
+						<i class="nav-icon fas fa-tachometer-alt"></i>
+						<p>
+							Dashboard
+							<i class="right fas fa-angle-left"></i>
+						</p>
+					</a>
+					<ul class="nav nav-treeview">
+						<li class="nav-item">
+							<a th:href="@{'/forms/single/'}" th:class="'nav-link '+${subtitulo == 'Dashboard Principal' ? 'active' : ''}">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Dashboard Principal</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="./index2.html" th:class="'nav-link '+${subtitulo == 'Dashboard Cocteles' ? 'active' : ''}">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Dashboard Cocteles</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="./index3.html" th:class="'nav-link '+${subtitulo == 'Dashboard Ventas' ? 'active' : ''}">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Dashboard Ventas</p>
+							</a>
+						</li>
+					</ul>
+				</li>
+				<li th:class="'nav-item '+${titulo == 'Cocteles' ? 'menu-open' : ''}">
+					<a href="#" th:class="'nav-link '+${titulo == 'Cocteles' ? 'active' : ''}">
+						<i class="nav-icon fas fa-glass-martini"></i>
+						<p>
+							Cocteles
+							<i class="fas fa-angle-left right"></i>
+						</p>
+					</a>
+					<ul class="nav nav-treeview">
+						<li class="nav-item">
+							<a th:href="@{'/forms/formCoctel'}" th:class="'nav-link '+${subtitulo == 'Agregar coctel' ? 'active' : ''}">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Agregar coctel</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a th:href="@{'/forms/listarCocteles'}" th:class="'nav-link '+${subtitulo == 'Listar cocteles' ? 'active' : ''}">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Listar cocteles</p>
+							</a>
+						</li>
+					</ul>
+				</li>
+				<li th:class="'nav-item '+${titulo == 'Ingredientes' ? 'menu-open' : ''}">
+					<a href="#" th:class="'nav-link '+${titulo == 'Ingredientes' ? 'active' : ''}">
+						<i class="nav-icon fas fa-lemon"></i>
+						<p>
+							Ingredientes
+							<i class="fas fa-angle-left right"></i>
+						</p>
+					</a>
+					<ul class="nav nav-treeview">
+						<li class="nav-item">
+							<a th:href="@{'/forms/formIngrediente'}" th:class="'nav-link '+${subtitulo == 'Agregar Ingrediente' ? 'active' : ''}">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Agregar Ingrediente</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a th:href="@{'/forms/listarIngredientes'}" th:class="'nav-link '+${subtitulo == 'Listar Ingredientes' ? 'active' : ''}">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Listar Ingredientes</p>
+							</a>
+						</li>
+					</ul>
+				</li>
+				<li th:class="'nav-item '+${titulo == 'Medidas' ? 'menu-open' : ''}">
+					<a href="#" th:class="'nav-link '+${titulo == 'Medidas' ? 'active' : ''}">
+						<i class="nav-icon fas fa-ruler"></i>
+						<p>
+							Medidas
+							<i class="right fas fa-angle-left"></i>
+						</p>
+					</a>
+					<ul class="nav nav-treeview">
+						<li class="nav-item">
+							<a th:href="@{'/forms/formMedida'}" th:class="'nav-link '+${subtitulo == 'Agregar medida' ? 'active' : ''}">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Agregar medida</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a th:href="@{'/forms/listarMedidas'}" th:class="'nav-link '+${subtitulo == 'Listar medidas' ? 'active' : ''}">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Listar medidas</p>
+							</a>
+						</li>
+					</ul>
+				</li>
+				<li th:class="'nav-item '+${titulo == 'Usuarios' ? 'menu-open' : ''}">
+					<a href="#" th:class="'nav-link '+${titulo == 'Usuarios' ? 'active' : ''}">
+						<i class="nav-icon fas fa-user"></i>
+						<p>
+							Usuarios
+							<i class="right fas fa-angle-left"></i>
+						</p>
+					</a>
+					<ul class="nav nav-treeview">
+						<li class="nav-item">
+							<a th:href="@{'/forms/formUsuario'}" th:class="'nav-link '+${subtitulo == 'Agregar usuario' ? 'active' : ''}">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Agregar usuario</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a th:href="@{'/forms/listarUsuarios'}" th:class="'nav-link '+${subtitulo == 'Listar usuarios' ? 'active' : ''}">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Listar usuarios</p>
+							</a>
+						</li>
+					</ul>
+				</li>
+				<li th:class="'nav-item '+${titulo == 'Pedidos' ? 'menu-open' : ''}">
+					<a href="#" th:class="'nav-link '+${titulo == 'Pedidos' ? 'active' : ''}">
+						<i class="nav-icon fas fa-dollar-sign"></i>
+						<p>
+							Pedidos
+							<i class="right fas fa-angle-left"></i>
+						</p>
+					</a>
+					<ul class="nav nav-treeview">
+						<li class="nav-item">
+							<a th:href="@{'/forms/formPedidos'}" th:class="'nav-link '+${subtitulo == 'Agregar pedido' ? 'active' : ''}">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Agregar pedido</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a th:href="@{'/forms/listarPedidos'}" th:class="'nav-link '+${subtitulo == 'Listar pedidos' ? 'active' : ''}">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Listar pedidos</p>
+							</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+		<!-- /.sidebar-menu -->
+	</div>
+	<!-- /.sidebar -->
+</aside>

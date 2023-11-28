@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head th:replace="~{/fragments/adminLTE/header :: header}"></head>
+
+
+<body class="hold-transition sidebar-mini layout-fixed">
+	<div class="wrapper">
+		<div th:replace="~{/fragments/adminLTE/preloader :: preloeader}"></div>
+		<div th:replace="~{/fragments/adminLTE/navbar :: navbar}"></div>
+		<div th:replace="~{/fragments/adminLTE/sidebar :: sidebar}"></div>
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Main content -->
+			<section class="content">
+				<div class="container-fluid">
+					<div th:replace="~{/fragments/adminLTE/content-header :: content-header}"></div>
+					<h1>HOLA ALUMNOS</h1>
+				</div>
+			</section>
+		</div>
+	</div>
+</body>
+<div th:replace="~{/fragments/adminLTE/footer :: footer}"></div>
+<div th:replace="~{/fragments/adminLTE/plugins :: AdminLTEPlugins}"></div>
+
+
+</html>

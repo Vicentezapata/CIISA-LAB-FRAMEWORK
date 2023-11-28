@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head th:replace="~{/fragments/adminLTE/header :: header}"></head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+	<div class="wrapper">
+		<div th:replace="~{/fragments/adminLTE/navbar :: navbar}"></div>
+		<div th:replace="~{/fragments/adminLTE/sidebar :: sidebar}"></div>
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Main content -->
+			<section class="content">
+				<div class="container-fluid">
+					<div th:replace="~{/fragments/adminLTE/content-header :: content-header}"></div>
+
+					<div class="container-fluid">
+						<div class="card">
+							<div class="card-header">
+								<h3 class="card-title" th:text="${subtitulo}"></h3>
+							</div>
+							<div class="card-body">
+
+								<div class="row">
+									<div class="col">
+										<div class="form-group">
+											<label for="cliente">Cliente</label>
+											<input th:field="*{pedido.usuario.nombre}" disabled class="form-control">
+										</div>
+									</div>
+
+									<div class="col">
+										<div class="form-group">
+											<label>Fecha estado</label>
+											<input th:field="*{pedido.fechaPedido}" disabled class="form-control">
+										</div>
+									</div>
+
+								</div>
+
+								<div class="row">
+									<div class="col">
+										<div class="form-group">
+											<label class="col-sm-4 col-form-label">Estado</label>
+											<input th:field="*{pedido.estado.nombre}" disabled class="form-control">
+										</div>
+									</div>
+
+									<div class="col">
+										<div class="form-group">
+											<label class="col-sm-2 col-form-label">Total</label>
+											<input th:value="${total}" disabled class="form-control">
+										</div>
+									</div>
+
+								</div>
+
+								<form th:if="${opcion.equals('agregar')||opcion.equals('editar')}" th:action="@{/forms/guardarDetallePedido}"
+									th:object="${detallesPedido}" method="post">
+
+									<input th:value="${pedido.id}" id="pedido_id" name="pedido_id" hidden
+										class="form-control">
+
+									<div class="row">
+										<div class="form-group col">
+											<label for="nombreCoctel">Ingrediente</label>
+											<select class="form-control" id="coctel_id" name="coctel_id">
+												<option th:each="coctel : ${cocteles}" th:value="${coctel.id}"
+													th:text="${coctel.nombre}">
+												</option>
+											</select>
+										</div>
+										<div class="form-group col">
+											<label for="nombreCoctel">Cantidad</label>
+											<input id="cantidad" value="1" name="cantidad" type="number"
+												class="form-control">
+										</div>
+									</div>
+
+									<button type="submit" class="btn btn-block btn-default btn-lg">Guardar</button>
+								</form>
+
+							</div>
+						</div>
+
+						<div class="card" th:if="${listDetallesPedidos.size()>0}">
+							<div class="card-header">
+								<h3 class="card-title">Ingredientes registrados</h3>
+							</div>
+							<div class="card-body">
+
+								<table id="tabla" class="table table-bordered table-striped">
+									<thead>
+										<tr>
+											<th>Coctel</th>
+											<th>Cantidad</th>
+											<th>Precio</th>
+											<th>Subtotal</th>
+											<th th:if="${opcion.equals('agregar')||opcion.equals('editar')}">Acciones</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="detallePed: ${listDetallesPedidos}">
+											<td th:text="${detallePed.coctel.nombre}"></td>
+											<td th:text="${detallePed.cantidad}"></td>
+											<td th:text="${detallePed.coctel.precio}"></td>
+											<td th:text="${detallePed.cantidad}*${detallePed.coctel.precio}"></td>
+											<td th:if="${opcion.equals('agregar')||opcion.equals('editar')}">
+												<div class="row">
+													<div class="col col-sm-4">
+														<a class="btn btn-block btn-secondary btn-sm"
+															th:href="@{'/forms/cocteles/ver/' + ${detallePed.coctel.id}}">
+															<i class="fas fa-eye"></i>
+														</a>
+													</div>
+													<div class="col col-sm-4">
+														<a class="btn btn-block btn-info btn-sm"
+															th:href="@{'/forms/cocteles/editar/' + ${detallePed.coctel.id}}">
+															<i class="fas fa-pen"></i>
+														</a>
+													</div>
+													<div class="col col-sm-4">
+														<a class="btn btn-block btn-danger btn-sm"
+															th:href="@{'/forms/ingredientescoctel/eliminar/'+ ${detallePed}+'/' + ${detallePed}}"
+															onclick="return confirm('¿Estas seguro que desea eliminar la factura?');">
+															<i class="fas fa-trash"></i>
+														</a>
+													</div>
+												</div>
+											</td>
+										</tr>
+									<tfoot>
+										<tr>
+											<th>Coctel</th>
+											<th>Cantidad</th>
+											<th>Precio</th>
+											<th>Subtotal</th>
+											<th th:if="${opcion.equals('agregar')||opcion.equals('editar')}">Acciones</th>
+										</tr>
+									</tfoot>
+								</table>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+</body>
+<div th:replace="~{/fragments/adminLTE/footer :: footer}"></div>
+<div th:replace="~{/fragments/adminLTE/plugins :: AdminLTEPlugins}"></div>
+<script th:src="@{/javascript/functions.js}"></script>
+
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head th:replace="~{/fragments/adminLTE/header :: header}"></head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+	<div class="wrapper">
+		<div th:replace="~{/fragments/adminLTE/navbar :: navbar}"></div>
+		<div th:replace="~{/fragments/adminLTE/sidebar :: sidebar}"></div>
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Main content -->
+			<section class="content">
+				<div class="container-fluid">
+					<div th:replace="~{/fragments/adminLTE/content-header :: content-header}"></div>
+
+					<div class="container-fluid">
+						<div class="card">
+							<div class="card-header">
+								<h3 class="card-title" th:text="${subtitulo}"></h3>
+							</div>
+							<div class="card-body">
+								<form th:if="${opcion.equals('editar') or opcion.equals('agregar')}"
+									th:action="@{/forms/guardarPedido}" th:object="${pedido}" method="post">
+									<input th:field="*{id}" type="hidden" class="form-control">
+									<input th:field="*{createAt}" type="hidden" class="form-control">
+
+									<div th:if="${pedido.usuario != null}" class="form-group">
+										<label for="nombreCoctel">Usuario</label>
+										<select class="form-control" id="usuario_id" name="usuario_id">
+											<option th:each="usuario : ${usuarios}" th:value="${usuario.id}"
+												th:text="${usuario.nombre}"
+												th:selected="${pedido.usuario.nombre == usuario.nombre}">
+											</option>
+										</select>
+									</div>
+									
+									<div th:if="${pedido.usuario == null}" class="form-group">
+										<label for="nombreCoctel">Usuario</label>
+										<select class="form-control" id="usuario_id" name="usuario_id">
+											<option th:each="usuario : ${usuarios}" th:value="${usuario.id}"
+												th:text="${usuario.nombre}">
+											</option>
+										</select>
+									</div>
+
+
+
+									<div class="form-group">
+										<label>Fecha despacho:</label>
+										<div class="input-group date" id="reservationdate" data-target-input="nearest">
+											<input type="text" class="form-control datetimepicker-input"
+												data-target="#reservationdate" name="fechaPedido"
+												th:value="*{fechaPedido}"/>
+												
+											<div th:if="${opcion.equals('agregar')}"
+											 class="input-group-append" data-target="#reservationdate"
+												data-toggle="datetimepicker">
+												<div class="input-group-text"><i class="fa fa-calendar"></i></div>
+											</div>
+										</div>
+
+										<div th:if="${pedido.estado!=null}" class="form-group">
+											<label for="nombreCoctel">Usuario</label>
+											<select  class="form-control" id="estado_id" name="estado_id">
+												<option th:each="estado : ${estados}" th:value="${estado.id}"
+													th:text="${estado.nombre}"
+													th:selected="${pedido.estado.nombre == estado.nombre}">
+												</option>
+											</select>
+										</div>
+										
+										<div th:if="${pedido.estado==null}" class="form-group">
+											<label for="nombreCoctel">Usuario</label>
+											<select  class="form-control" id="estado_id" name="estado_id">
+												<option th:each="estado : ${estados}" th:value="${estado.id}"
+													th:text="${estado.nombre}">
+												</option>
+											</select>
+										</div>
+
+										<button type="submit" class="btn btn-block btn-default btn-lg">Guardar</button>
+								</form>
+
+								<div th:if="${opcion.equals('ver')}">
+									<div class="form-group">
+										<label for="nombreCoctel">Nombre</label>
+										<input th:field="*{usuario.nombre}" disabled class="form-control">
+									</div>
+									<div class="form-group">
+										<label class="col-sm-4 col-form-label">Apellido</label>
+										<input th:field="*{usuario.apellido}" disabled class="form-control">
+									</div>
+									<div class="form-group">
+										<label class="col-sm-2 col-form-label">Correo</label>
+										<input th:field="*{usuario.email}" disabled class="form-control">
+									</div>
+									<div class="form-group">
+										<label class="col-sm-4 col-form-label">Rol</label>
+										<input th:field="*{usuario.rol}" disabled class="form-control">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+</body>
+<div th:replace="~{/fragments/adminLTE/footer :: footer}"></div>
+<div th:replace="~{/fragments/adminLTE/plugins :: AdminLTEPlugins}"></div>
+
+<script th:if="${opcion.equals('agregar')}">
+	//Date picker
+	$('#reservationdate').datetimepicker({
+		format: 'L'
+	});
+</script>
+
+</html>

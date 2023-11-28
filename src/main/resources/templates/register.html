@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head th:replace="~{/fragments/adminLTE/header :: header}"></head>
+
+
+<body class="hold-transition login-page">
+	<div class="login-box">
+		<div class="card card-outline card-primary">
+			<div class="card-header text-center">
+				<img th:src="@{images/logo.jpeg}" class="img-fluid" alt="...">
+				<p href="../../index2.html" th:text="${nombreApp}" class="h1"></p>
+			</div>
+			<div class="card-body">
+				<p class="login-box-msg" th:text="${titulo}"></p>
+				<form th:action="@{/login}" method="get">
+					<div class="input-group mb-3">
+						<input type="text" class="form-control" placeholder="Nombre">
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<span class="fas fa-user"></span>
+							</div>
+						</div>
+					</div>
+					<div class="input-group mb-3">
+						<input type="text" class="form-control" placeholder="Apellido">
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<span class="fas fa-user"></span>
+							</div>
+						</div>
+					</div>
+					<div class="input-group mb-3">
+						<input type="email" class="form-control" placeholder="Correo">
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<span class="fas fa-envelope"></span>
+							</div>
+						</div>
+					</div>
+					<div class="input-group mb-3">
+						<input type="password" class="form-control" placeholder="Contraseña">
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<span class="fas fa-lock"></span>
+							</div>
+						</div>
+					</div>
+					<div class="input-group mb-3">
+						<input type="password" class="form-control" placeholder="Repetir contraseña">
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<span class="fas fa-lock"></span>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12">
+							<button type="submit" class="btn btn-primary btn-block">Registarme</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+<div th:replace="~{/fragments/adminLTE/plugins :: AdminLTEPlugins}"></div>
+
+</html>

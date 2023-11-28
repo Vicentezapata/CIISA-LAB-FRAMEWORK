@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head th:replace="~{/fragments/adminLTE/header :: header}"></head>
+
+
+<body class="hold-transition login-page">
+	<div class="login-box">
+		<div class="card card-outline card-primary">
+			<div class="card-header text-center">
+				<img th:src="@{images/logo.jpeg}" class="img-fluid" alt="...">
+				<p href="../../index2.html" th:text="${nombreApp}" class="h1"></p>
+			</div>
+			<div class="card-body">
+				<p class="login-box-msg">Iniciar sesión</p>
+				<form th:action="@{/home}" method="get">
+					<div class="input-group mb-3">
+						<input type="email" class="form-control" placeholder="Correo">
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<span class="fas fa-envelope"></span>
+							</div>
+						</div>
+					</div>
+					<div class="input-group mb-3">
+						<input type="password" class="form-control" placeholder="Contraseña">
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<span class="fas fa-lock"></span>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-8">
+							<div class="icheck-primary">
+								<input type="checkbox" id="remember">
+								<label for="remember">
+									Recordarme
+								</label>
+							</div>
+						</div>
+						<div class="col-4">
+							<button type="submit" class="btn btn-primary btn-block">Acceder</button>
+						</div>
+					</div>
+				</form>
+				<p class="mb-1">
+					<a href="forgot-password.html">Olvide mi contraseña</a>
+				</p>
+				<p class="mb-0">
+					<a th:href="@{/register}" class="text-center">Registrar un nuevo miembro</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</body>
+<div th:replace="~{/fragments/adminLTE/plugins :: AdminLTEPlugins}"></div>
+</html>
+
+
+
