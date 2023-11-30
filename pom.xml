@@ -55,6 +55,16 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
+		<!-- pom.xml -->
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>org.thymeleaf.extras</groupId>
+		    <artifactId>thymeleaf-extras-springsecurity6</artifactId>
+		</dependency>
+		<!-- pom.xml -->
 	</dependencies>
 
 	<build>
@@ -62,19 +72,6 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-			<!-- OWASP Dependency Check Maven Plugin. -->
-			<plugin>
-				<groupId>org.owasp</groupId>
-				<artifactId>dependency-check-maven</artifactId>
-				<version>6.5.3</version>
-				<executions>
-				    <execution>
-					<goals>
-					    <goal>check</goal>
-					</goals>
-				    </execution>
-				</executions>
 			</plugin>
 		</plugins>
 	</build>

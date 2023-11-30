@@ -36,6 +36,7 @@ public class Usuario implements Serializable{
 
 	@NotEmpty
 	@Email
+	@Column(unique = true)
 	private String email;
 	
 	@NotEmpty

@@ -19,9 +19,17 @@
 			<div class="image">
 				<img th:src="@{/images/logo.jpeg}" class="img-circle elevation-2" alt="User Image">
 			</div>
+			<!-- GENERAR USER MEDIANTE Model Atribute 
 			<div class="info">
 				<a href="#" th:text="${usuario.nombre +' '+ usuario.apellido }" class="d-block"></a>
 			</div>
+			-->
+			<!-- NOMBRE USER MEDIANTE SPRING SECURITY -->
+			<div sec:authorize="isAuthenticated()" class="info">
+				<p sec:authentication="name" class="d-block text-white"></p>
+			</div>
+			
+			
 		</div>
 
 		<!-- SidebarSearch Form -->
@@ -51,21 +59,9 @@
 					</a>
 					<ul class="nav nav-treeview">
 						<li class="nav-item">
-							<a th:href="@{'/forms/single/'}" th:class="'nav-link '+${subtitulo == 'Dashboard Principal' ? 'active' : ''}">
+							<a th:href="@{'/'}" th:class="'nav-link '+${subtitulo == 'Dashboard Principal' ? 'active' : ''}">
 								<i class="far fa-circle nav-icon"></i>
 								<p>Dashboard Principal</p>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="./index2.html" th:class="'nav-link '+${subtitulo == 'Dashboard Cocteles' ? 'active' : ''}">
-								<i class="far fa-circle nav-icon"></i>
-								<p>Dashboard Cocteles</p>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="./index3.html" th:class="'nav-link '+${subtitulo == 'Dashboard Ventas' ? 'active' : ''}">
-								<i class="far fa-circle nav-icon"></i>
-								<p>Dashboard Ventas</p>
 							</a>
 						</li>
 					</ul>

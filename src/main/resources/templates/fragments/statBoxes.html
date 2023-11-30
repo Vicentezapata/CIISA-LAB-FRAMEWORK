@@ -11,7 +11,7 @@
 			<div class="icon">
 				<i class="nav-icon fas fa-glass-martini"></i>
 			</div>
-			<a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+			<a th:href="@{'/forms/listarCocteles'}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
 		</div>
 	</div>
 	<!-- ./col -->
@@ -19,14 +19,14 @@
 		<!-- small box -->
 		<div class="small-box bg-success">
 			<div class="inner">
-				<h3>53<sup style="font-size: 20px">%</sup></h3>
+				<h3 th:text="${pedidos.size()}"></h3>
 
-				<p>Ventas</p>
+				<p>Pedidos</p>
 			</div>
 			<div class="icon">
 				<i class="nav-icon fas fa-dollar-sign"></i>
 			</div>
-			<a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+			<a th:href="@{'/forms/listarPedidos'}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
 		</div>
 	</div>
 	<!-- ./col -->
@@ -34,14 +34,14 @@
 		<!-- small box -->
 		<div class="small-box bg-warning">
 			<div class="inner">
-				<h3>44</h3>
+				<h3 th:text="${ingredientes.size()}"></h3>
 
 				<p>Ingredientes</p>
 			</div>
 			<div class="icon">
 				<i class="nav-icon fas fa-lemon"></i>
 			</div>
-			<a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+			<a th:href="@{'/forms/listarIngredientes'}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
 		</div>
 	</div>
 	<!-- ./col -->
@@ -51,12 +51,12 @@
 			<div class="inner">
 				<h3 th:text="${usuarios.size()}"></h3>
 
-				<p>Clientes</p>
+				<p>Usuarios</p>
 			</div>
 			<div class="icon">
 				<i class="ion ion-person-add"></i>
 			</div>
-			<a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+			<a th:href="@{'/forms/listarUsuarios'}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
 		</div>
 	</div>
 	<!-- ./col -->

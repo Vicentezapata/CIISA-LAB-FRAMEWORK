@@ -42,13 +42,13 @@
 															<i class="fas fa-eye"></i>
 														</a>
 													</div>
-													<div class="col col-sm-4">
+													<div sec:authorize="hasRole('ADMIN')" class="col col-sm-4">
 														<a class="btn btn-block btn-info btn-sm"
 															th:href="@{'/forms/pedidos/editar/' + ${pedido.id}}">
 															<i class="fas fa-pen"></i>
 														</a>
 													</div>
-													<div class="col col-sm-4">
+													<div  sec:authorize="hasRole('ADMIN')" class="col col-sm-4">
 														<a class="btn btn-block btn-danger btn-sm"
 															th:href="@{'/forms/pedidos/eliminar/' + ${pedido.id}}"
 															onclick="return confirm('¿Estas seguro que desea eliminar la factura?');">

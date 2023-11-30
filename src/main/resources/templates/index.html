@@ -15,7 +15,19 @@
 			<section class="content">
 				<div class="container-fluid">
 					<div th:replace="~{/fragments/adminLTE/content-header :: content-header}"></div>
-					<h1>HOLA ALUMNOS</h1>
+					<div class="container-fluid">
+						<div th:replace="~{/fragments/statBoxes :: stat-box}"></div>
+						<div class="card">
+							<div class="card-header">
+								<h3 class="card-title" th:text="${subtitulo}"></h3>
+							</div>
+							<div class="card-body">
+
+					
+
+							</div>
+						</div>
+					</div>
 				</div>
 			</section>
 		</div>
