@@ -56,8 +56,7 @@ public class SpringSecurityConfig {
 			.requestMatchers(new AntPathRequestMatcher("/forms/registrarUsuario")).permitAll()
 			.requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
 			.requestMatchers(new AntPathRequestMatcher("/forms/form*")).hasAnyRole("ADMIN")
-			.requestMatchers(new AntPathRequestMatcher("/forms/listar*")).hasRole("USER")
-			.requestMatchers(new AntPathRequestMatcher("/forms/listar*")).hasRole("ADMIN")
+			.requestMatchers(new AntPathRequestMatcher("/forms/listar*")).hasAnyRole("USER", "ADMIN")
 			.requestMatchers(new AntPathRequestMatcher("/forms/*/editar/*")).hasRole("ADMIN")
 			.requestMatchers(new AntPathRequestMatcher("/forms/*/eliminar/*")).hasRole("ADMIN")
 			.requestMatchers(new AntPathRequestMatcher("/h2-console/**")).permitAll() // Permitir acceso a la consola H2

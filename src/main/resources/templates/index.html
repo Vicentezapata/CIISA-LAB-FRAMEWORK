@@ -19,12 +19,21 @@
 						<div th:replace="~{/fragments/statBoxes :: stat-box}"></div>
 						<div class="card">
 							<div class="card-header">
-								<h3 class="card-title" th:text="${subtitulo}"></h3>
+								<h3 class="card-title">Precios cocteles</h3>
 							</div>
 							<div class="card-body">
+								<canvas id="myChart"></canvas>
 
-					
 
+
+							</div>
+						</div>
+						<div class="card">
+							<div class="card-header">
+								<h3 class="card-title">Ingredientes</h3>
+							</div>
+							<div class="card-body">
+								<canvas id="ingredientes"></canvas>
 							</div>
 						</div>
 					</div>
@@ -35,6 +44,81 @@
 </body>
 <div th:replace="~{/fragments/adminLTE/footer :: footer}"></div>
 <div th:replace="~{/fragments/adminLTE/plugins :: AdminLTEPlugins}"></div>
+<script th:inline="javascript">
+	var cocteles = /*[[${cocteles}]]*/ 'default';
+	var ctx = document.getElementById('myChart').getContext('2d');
+	var myChart = new Chart(ctx, {
+		type: 'bar',
+		data: {
+			labels: cocteles.map(coctel => coctel.nombre),
+			datasets: [{
+				label: 'Precio cocteles',
+				data: cocteles.map(coctel => coctel.precio),
+				backgroundColor: 'rgba(75, 192, 192, 0.2)',
+				borderColor: 'rgba(75, 192, 192, 1)',
+				borderWidth: 1
+			}]
+		},
+		options: {
+			scales: {
+				y: {
+					beginAtZero: true
+				}
+			}
+		}
+	});
 
+
+	//-------------
+	//- DONUT CHART -
+	//-------------
+	var ingredientes = /*[[${ingredientes}]]*/ 'default';
+	// Inicializamos dos arreglos vacíos: uno para las etiquetas (labels) y otro para los datos (data).
+	var labels = [];
+	var data = [];
+
+	// Inicializamos un objeto vacío para almacenar los conteos de cada categoría.
+	var counts = {};
+
+	// Recorremos el arreglo de ingredientes.
+	for (var i = 0; i < ingredientes.length; i++) {
+		// Obtenemos la categoría del ingrediente actual.
+		var categoria = ingredientes[i].categoria;
+
+		// Si la categoría ya existe en el objeto counts, incrementamos su conteo en 1.
+		// Si no existe, la añadimos al objeto counts con un conteo inicial de 1.
+		counts[categoria] = counts[categoria] ? counts[categoria] + 1 : 1;
+	}
+
+	// Recorremos el objeto counts.
+	for (var categoria in counts) {
+		// Añadimos la categoría al arreglo de etiquetas.
+		labels.push(categoria);
+
+		// Añadimos el conteo de la categoría al arreglo de datos.
+		data.push(counts[categoria]);
+	}
+	var donutChartCanvas = $('#ingredientes').get(0).getContext('2d')
+	var donutData = {
+		labels: labels,
+		datasets: [
+			{
+				data: data,
+				backgroundColor: ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
+			}
+		]
+	}
+	var donutOptions = {
+		maintainAspectRatio: false,
+		responsive: true,
+	}
+	//Create pie or douhnut chart
+	// You can switch between pie and douhnut using the method below.
+	new Chart(donutChartCanvas, {
+		type: 'doughnut',
+		data: donutData,
+		options: donutOptions
+	})
+</script>
 
 </html>
