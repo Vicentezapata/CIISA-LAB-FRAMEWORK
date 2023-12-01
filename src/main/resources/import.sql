@@ -30,13 +30,13 @@ INSERT INTO estados (nombre, create_at) VALUES('Despachado','2023-08-02');
 INSERT INTO estados (nombre, create_at) VALUES('Cancelado','2023-08-02');
 
 /* Insertar datos en tabla usuarios*/
-INSERT INTO usuarios (nombre, apellido, email, create_at, rol) VALUES('Vicente', 'Zapata', 'vzapata@ciisa.com', '2023-08-03', 'ADMIN');
-INSERT INTO usuarios (nombre, apellido, email, create_at, rol) VALUES('Jose', 'Sosa', 'jsosa@ciisa.com', '2023-08-03', 'USER');
-INSERT INTO usuarios (nombre, apellido, email, create_at, rol) VALUES('Jones', 'Gomez', 'jgomez@ciisa.com', '2023-08-03', 'USER');
-INSERT INTO usuarios (nombre, apellido, email, create_at, rol) VALUES('Williams', 'Gonzalez', 'wgonz@ciisa.com', '2023-08-03', 'USER');
-INSERT INTO usuarios (nombre, apellido, email, create_at, rol) VALUES('Camila', 'Torres', 'ctorres@ciisa.com', '2023-08-03', 'USER');
-INSERT INTO usuarios (nombre, apellido, email, create_at, rol) VALUES('Raquel', 'Martinez', 'rmartinez@ciisa.com', '2023-08-03', 'ADMIN');
-INSERT INTO usuarios (nombre, apellido, email, create_at, rol) VALUES('Cristina', 'Lopez', 'clopez@ciisa.com', '2023-08-03', 'USER');
+INSERT INTO usuarios (nombre, apellido, email, password, create_at, rol) VALUES('Vicente', 'Zapata', 'vzapata@ciisa.com', '$2a$10$JF4ixF5VMTB.rbIv9ZbQveTh1ytJ6wGD4i/VQUJJk6x.MdlG5sEVK', '2023-08-03', 'ADMIN');
+INSERT INTO usuarios (nombre, apellido, email, password, create_at, rol) VALUES('Jose', 'Sosa', 'jsosa@ciisa.com', '$2a$10$KthLd65Q1AlrPlfs8XlXyOHLlJsTCXw.sp8T38caXd0H7/ndtqDD6' , '2023-08-03', 'USER');
+INSERT INTO usuarios (nombre, apellido, email, password, create_at, rol) VALUES('Jones', 'Gomez', 'jgomez@ciisa.com', '$2a$10$KthLd65Q1AlrPlfs8XlXyOHLlJsTCXw.sp8T38caXd0H7/ndtqDD6' , '2023-08-03', 'USER');
+INSERT INTO usuarios (nombre, apellido, email, password, create_at, rol) VALUES('Williams', 'Gonzalez', 'wgonz@ciisa.com', '$2a$10$KthLd65Q1AlrPlfs8XlXyOHLlJsTCXw.sp8T38caXd0H7/ndtqDD6' , '2023-08-03', 'USER');
+INSERT INTO usuarios (nombre, apellido, email, password, create_at, rol) VALUES('Camila', 'Torres', 'ctorres@ciisa.com', '$2a$10$KthLd65Q1AlrPlfs8XlXyOHLlJsTCXw.sp8T38caXd0H7/ndtqDD6' , '2023-08-03', 'USER');
+INSERT INTO usuarios (nombre, apellido, email, password, create_at, rol) VALUES('Raquel', 'Martinez', 'rmartinez@ciisa.com', '$2a$10$JF4ixF5VMTB.rbIv9ZbQveTh1ytJ6wGD4i/VQUJJk6x.MdlG5sEVK', '2023-08-03', 'ADMIN');
+INSERT INTO usuarios (nombre, apellido, email, password, create_at, rol) VALUES('Cristina', 'Lopez', 'clopez@ciisa.com', '$2a$10$KthLd65Q1AlrPlfs8XlXyOHLlJsTCXw.sp8T38caXd0H7/ndtqDD6' , '2023-08-03', 'USER');
 
 /* Insertar datos en tabla cocteles*/
 INSERT INTO cocteles (nombre, descripcion, precio, create_at, imagen) VALUES('Mojito', 'Machacar....', 5990, '2023-08-03', '');

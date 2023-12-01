@@ -33,6 +33,9 @@ public class Usuario implements Serializable{
 
 	@NotEmpty
 	private String apellido;
+	
+	@NotEmpty
+	private String password;
 
 	@NotEmpty
 	@Email
@@ -104,6 +107,16 @@ public class Usuario implements Serializable{
 
 	public void setRol(String rol) {
 		this.rol = rol;
+	}
+	
+	
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	@Override

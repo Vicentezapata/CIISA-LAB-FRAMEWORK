@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,6 +36,10 @@ public class IndexController {
 
 	@Autowired
 	private IngredienteService ingredienteService;
+	
+	@Autowired
+    private PasswordEncoder passwordEncoder;
+
 	
 
 	// INYECTAR VALORES
@@ -69,6 +74,17 @@ public class IndexController {
 		model.addAttribute("subtitulo", "Dashboard Principal");
 		model.addAttribute("nombreApp", nombreApp);
 		model.addAttribute("usuario", usuario);
+		
+		//PROBRAR TEXTO ENCRIPTADO
+		String textoPlano = "Ciisa123";
+        String textoEncriptado = passwordEncoder.encode(textoPlano);
+        System.out.println("Texto encriptado: " + textoEncriptado);
+        
+        textoPlano = "admin123";
+        textoEncriptado = passwordEncoder.encode(textoPlano);
+        System.out.println("Texto encriptado: " + textoEncriptado);
+
+		
 		return "index";
 	}
 
@@ -79,6 +95,7 @@ public class IndexController {
 		return "login";
 	}
 	*/
+	
 	@GetMapping("/register")
 	public String register(Model model) {
 		model.addAttribute("titulo", "Formulario de registro");
